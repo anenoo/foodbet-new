@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserCoinHistoryRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserCoinHistoryRepository::class)]
@@ -25,7 +26,7 @@ class UserCoinHistory
     #[ORM\Column]
     private ?int $coin = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeImmutable $createdAt = null;
 
     public function getId(): ?int
