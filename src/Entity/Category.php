@@ -9,7 +9,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
-class Category
+class Category implements \JsonSerializable
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -23,13 +23,13 @@ class Category
     private ?User $createdBy = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $createdAT = null;
+    private ?\DateTimeInterface $createdAt = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $startedAt = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $finishedAt = null;
+    private ?\DateTimeImmutable $finishesAt = null;
 
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Idea::class)]
     private Collection $ideas;
@@ -76,14 +76,14 @@ class Category
         return $this;
     }
 
-    public function getCreatedAT(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->createdAT;
+        return $this->createdAt;
     }
 
     public function setCreatedAT(\DateTimeInterface $createdAT): self
     {
-        $this->createdAT = $createdAT;
+        $this->createdAt = $createdAT;
 
         return $this;
     }
@@ -100,14 +100,14 @@ class Category
         return $this;
     }
 
-    public function getFinishedAt(): ?\DateTimeImmutable
+    public function getFinishesAt(): ?\DateTimeImmutable
     {
-        return $this->finishedAt;
+        return $this->finishesAt;
     }
 
     public function setFinishedAt(\DateTimeImmutable $finishedAt): self
     {
-        $this->finishedAt = $finishedAt;
+        $this->finishesAt = $finishedAt;
 
         return $this;
     }
@@ -200,5 +200,29 @@ class Category
         }
 
         return $this;
+    }
+
+    public function getTotalCoinsBid(): int
+    {
+        $coinsBid = 0;
+        foreach ($this->getIdeas() as $idea) {
+            $coinsBid += $idea->getTotalBidCoins();
+        }
+
+        return $coinsBid;
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'id' => $this->getId(),
+            'title' => $this->getName(),
+            'created_at' => $this->getCreatedAt(),
+            'started_at' => $this->getStartedAt(),
+            'finishes_at' => $this->getFinishesAt(),
+            'idea_count' => $this->getIdeas()->count(),
+            'total_coins_bid' =>  $this->getTotalCoinsBid(),
+            'is_open' => $this->getFinishesAt() > new \DateTime(),
+        ];
     }
 }
