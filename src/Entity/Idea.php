@@ -9,7 +9,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: IdeaRepository::class)]
-class Idea
+class Idea implements \JsonSerializable
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -18,9 +18,6 @@ class Idea
 
     #[ORM\Column(length: 512)]
     private ?string $title = null;
-
-    #[ORM\Column(length: 512, nullable: true)]
-    private ?string $description = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $status = null;
@@ -56,18 +53,6 @@ class Idea
     public function setTitle(string $title): self
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(?string $description): self
-    {
-        $this->description = $description;
 
         return $this;
     }
@@ -166,5 +151,27 @@ class Idea
         }
 
         return $this;
+    }
+
+    public function getTotalBidCoins(): int
+    {
+        $tempBidCoins = 0;
+
+        foreach ($this->getTemporaryUserCoins() as $temporaryUserCoin) {
+            $tempBidCoins += $temporaryUserCoin->getSpentCoin();
+        }
+
+        return $tempBidCoins;
+    }
+
+
+    public function jsonSerialize(): mixed
+    {
+        return [
+            'id' => $this->getId(),
+            'category_id' => $this->getCategory()->getId(),
+            'title' => $this->getTitle(),
+            'bids' => $this->getTotalBidCoins(),
+        ];
     }
 }

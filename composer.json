@@ -11,6 +11,7 @@
     "doctrine/doctrine-migrations-bundle": "^3.2",
     "doctrine/orm": "^2.14",
     "easycorp/easyadmin-bundle": "^4.6",
+    "snappfood/api-response-bundle": "^1.0.0",
     "symfony/console": "6.2.*",
     "symfony/dotenv": "6.2.*",
     "symfony/flex": "^2",
@@ -75,5 +76,12 @@
       "allow-contrib": false,
       "require": "6.2.*"
     }
-  }
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://git.snappfood.ir/backend/php/packages/sf-api-response.git"
+    }
+  ]
+
 }

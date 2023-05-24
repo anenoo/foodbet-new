@@ -131,6 +131,9 @@
     "psr/log": {
         "version": "1.1.2"
     },
+    "snappfood/api-response-bundle": {
+        "version": "v1.1.0"
+    },
     "symfony/cache": {
         "version": "v5.0.1"
     },

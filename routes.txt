@@ -1,0 +1,13 @@
+ ------------------ -------- -------- ------ -------------------------- 
+  Name               Method   Scheme   Host   Path                      
+ ------------------ -------- -------- ------ -------------------------- 
+  _preview_error     ANY      ANY      ANY    /_error/{code}.{_format}  
+  admin              ANY      ANY      ANY    /admin                    
+  app_api_login      ANY      ANY      ANY    /api/login                
+  articles           GET      ANY      ANY    /articles                 
+  app_login          ANY      ANY      ANY    /login                    
+  app_register       ANY      ANY      ANY    /register                 
+  app_verify_email   ANY      ANY      ANY    /verify/email             
+  api_login          ANY      ANY      ANY    /api/v1/auth/login        
+ ------------------ -------- -------- ------ -------------------------- 
+
