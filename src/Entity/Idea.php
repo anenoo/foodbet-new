@@ -31,10 +31,10 @@ class Idea
     #[ORM\ManyToOne(inversedBy: 'ideas')]
     private ?User $User = null;
 
-    #[ORM\OneToMany(mappedBy: 'Idea', targetEntity: UserCoinHistory::class)]
+    #[ORM\OneToMany(mappedBy: 'IdeaFixture', targetEntity: UserCoinHistory::class)]
     private Collection $userCoinHistories;
 
-    #[ORM\OneToMany(mappedBy: 'Idea', targetEntity: TemporaryUserCoin::class)]
+    #[ORM\OneToMany(mappedBy: 'IdeaFixture', targetEntity: TemporaryUserCoin::class)]
     private Collection $temporaryUserCoins;
 
     public function __construct()

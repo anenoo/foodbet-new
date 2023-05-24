@@ -40,7 +40,7 @@ class IdeaRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Idea[] Returns an array of Idea objects
+//     * @return IdeaFixture[] Returns an array of IdeaFixture objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class IdeaRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Idea
+//    public function findOneBySomeField($value): ?IdeaFixture
 //    {
 //        return $this->createQueryBuilder('i')
 //            ->andWhere('i.exampleField = :val')

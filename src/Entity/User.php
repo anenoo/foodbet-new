@@ -39,13 +39,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'createdBy', targetEntity: Category::class)]
     private Collection $categories;
 
-    #[ORM\OneToMany(mappedBy: 'User', targetEntity: Idea::class)]
+    #[ORM\OneToMany(mappedBy: 'UserFixture', targetEntity: Idea::class)]
     private Collection $ideas;
 
-    #[ORM\OneToMany(mappedBy: 'User', targetEntity: UserCoinHistory::class)]
+    #[ORM\OneToMany(mappedBy: 'UserFixture', targetEntity: UserCoinHistory::class)]
     private Collection $userCoinHistories;
 
-    #[ORM\OneToMany(mappedBy: 'User', targetEntity: TemporaryUserCoin::class)]
+    #[ORM\OneToMany(mappedBy: 'UserFixture', targetEntity: TemporaryUserCoin::class)]
     private Collection $temporaryUserCoins;
 
     #[ORM\Column(type: 'boolean')]
