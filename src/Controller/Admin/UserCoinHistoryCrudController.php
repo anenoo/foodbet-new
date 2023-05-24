@@ -22,9 +22,9 @@ class UserCoinHistoryCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            AssociationField::new('User')->autocomplete(),
-            AssociationField::new('Category')->autocomplete(),
-            AssociationField::new('Idea')->autocomplete(),
+            AssociationField::new('UserFixture')->autocomplete(),
+            AssociationField::new('CategoryFixture')->autocomplete(),
+            AssociationField::new('IdeaFixture')->autocomplete(),
             NumberField::new('coin'),
             DateTimeField::new('createdAT'),
         ];

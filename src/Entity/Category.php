@@ -34,10 +34,10 @@ class Category
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Idea::class)]
     private Collection $ideas;
 
-    #[ORM\OneToMany(mappedBy: 'Category', targetEntity: UserCoinHistory::class)]
+    #[ORM\OneToMany(mappedBy: 'CategoryFixture', targetEntity: UserCoinHistory::class)]
     private Collection $userCoinHistories;
 
-    #[ORM\OneToMany(mappedBy: 'Category', targetEntity: TemporaryUserCoin::class)]
+    #[ORM\OneToMany(mappedBy: 'CategoryFixture', targetEntity: TemporaryUserCoin::class)]
     private Collection $temporaryUserCoins;
 
     public function __construct()
