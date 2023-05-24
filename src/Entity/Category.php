@@ -19,7 +19,7 @@ class Category
     #[ORM\Column(length: 512)]
     private ?string $name = null;
 
-    #[ORM\ManyToOne(inversedBy: 'startedAt')]
+    #[ORM\ManyToOne(inversedBy: 'categories')]
     private ?User $createdBy = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
